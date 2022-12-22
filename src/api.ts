@@ -6,14 +6,14 @@ export type API = {
     "auth/CurrentUserFetch": { user: "required", input: {}, output: UserLoggedInData }
     "auth/SessionLogOut": {user: "required", input: {}, output: void}
     // App
-    "app/FeaturedImagesFetch": {user: "optional", input: string, output: number}
+    "app/FeaturedImagesFetch": {user: "optional", input: {}, output: number}
 }
 
 type GetApiRouteGroupPart<Route> = Route extends `${infer Group}/${string}` ? Group : never
 type GetApiRouteMethodPartFromGroup<Route,Group extends string> = Route extends `${Group}/${infer Method}` ? Method : never
 type MakeApiRoute<Group extends string,Method extends string> = `${Group}/${Method}`
 
-type ClientApiInterface = { 
+export type ClientApiInterface = { 
     [Route in keyof API]: 
     API[Route]["user"] extends "required" ?
     (input: API[Route]["input"], apiKey: string) => Promise<API[Route]["output"]> :
@@ -24,7 +24,7 @@ type ClientApiInterface = {
     never
 }
 
-type ServerApiHandler<UserLookup, Input, Output> = 
+export type ServerApiHandler<UserLookup, Input, Output> = 
     UserLookup extends "required"  ?
     {user: "required", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user: UserLoggedInData) =>  Promise<Output>} :
     UserLookup extends "optional"  ?
@@ -33,7 +33,7 @@ type ServerApiHandler<UserLookup, Input, Output> =
     {user: "none", inputValidator: (data: unknown) => Input, requestHandler: (input: Input) =>  Promise<Output>} :
     never
 
-type ServerApiInterface = {
+export type ServerApiInterface = {
     [RouteGroup in GetApiRouteGroupPart<keyof API>]: {
         [RouteMethod in GetApiRouteMethodPartFromGroup<keyof API, RouteGroup>]: 
             MakeApiRoute<RouteGroup, RouteMethod> extends keyof API ? (
