@@ -9,6 +9,7 @@ export type JsonValue =
 | boolean
 | { [x: string]: JsonValue }
 | Array<JsonValue>
+| null
 
 /* ======== DATABASE TYPES ========== */
 

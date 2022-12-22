@@ -9,13 +9,15 @@ import {
 } from "./types";
 
 export const jsonValueSchema: z.ZodSchema<JsonValue> = z.lazy(() =>
-  z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.record(jsonValueSchema),
-    z.array(jsonValueSchema),
-  ])
+  z
+    .union([
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.record(jsonValueSchema),
+      z.array(jsonValueSchema),
+    ])
+    .nullable()
 );
 
 export const globalRoleSchema = z.nativeEnum(GlobalRole);

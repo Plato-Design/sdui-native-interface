@@ -1,6 +1,6 @@
 export type JsonValue = string | number | boolean | {
     [x: string]: JsonValue;
-} | Array<JsonValue>;
+} | Array<JsonValue> | null;
 export declare enum GlobalRole {
     SUPERADMIN = 0,
     CUSTOMER = 1,

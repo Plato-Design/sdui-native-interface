@@ -5,13 +5,15 @@ exports.userLoggedInDataSchema = exports.loggedOutPredictionImageSchema = export
 var zod_1 = require("zod");
 var types_1 = require("./types");
 exports.jsonValueSchema = zod_1.z.lazy(function () {
-    return zod_1.z.union([
+    return zod_1.z
+        .union([
         zod_1.z.string(),
         zod_1.z.number(),
         zod_1.z.boolean(),
         zod_1.z.record(exports.jsonValueSchema),
         zod_1.z.array(exports.jsonValueSchema),
-    ]);
+    ])
+        .nullable();
 });
 exports.globalRoleSchema = zod_1.z.nativeEnum(types_1.GlobalRole);
 exports.userSchema = zod_1.z.object({
