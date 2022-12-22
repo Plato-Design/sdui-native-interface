@@ -176,11 +176,9 @@ export const loggedInUserPredictionImageSchema = predictionImageSchema.and(
   })
 );
 
-export const userLoggedInDataSchema = z.object({
-  user: userSchema.and(
-    z.object({
-      userPrivileged: userPrivilegedSchema,
-      trainedEntities: z.array(trainedEntitySchema),
-    })
-  ),
-});
+export const userLoggedInDataSchema = userSchema.and(
+  z.object({
+    userPrivileged: userPrivilegedSchema,
+    trainedEntities: z.array(trainedEntitySchema),
+  })
+);

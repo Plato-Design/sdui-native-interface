@@ -146,9 +146,7 @@ exports.loggedInUserPredictionImageSchema = exports.predictionImageSchema.and(zo
     bookmarkedPredictionImages: zod_1.z.array(exports.bookmarkedPredictionImageSchema),
     dislikedPredictionImages: zod_1.z.array(exports.dislikedPredictionImageSchema)
 }));
-exports.userLoggedInDataSchema = zod_1.z.object({
-    user: exports.userSchema.and(zod_1.z.object({
-        userPrivileged: exports.userPrivilegedSchema,
-        trainedEntities: zod_1.z.array(exports.trainedEntitySchema)
-    }))
-});
+exports.userLoggedInDataSchema = exports.userSchema.and(zod_1.z.object({
+    userPrivileged: exports.userPrivilegedSchema,
+    trainedEntities: zod_1.z.array(exports.trainedEntitySchema)
+}));

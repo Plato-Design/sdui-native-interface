@@ -16,4 +16,4 @@ cp.execSync(`git tag v${version}`, {stdio: 'inherit'})
 cp.execSync('git push origin master', {stdio: 'inherit'})
 cp.execSync('git push origin --tags', {stdio: 'inherit'})
 
-cp.execSync(`yarn publish --non-interactive --new-version ${version}`, {stdio: 'inherit'})
+// cp.execSync(`yarn publish --non-interactive --new-version ${version}`, {stdio: 'inherit'})
