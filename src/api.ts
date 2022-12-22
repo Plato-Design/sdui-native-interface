@@ -6,7 +6,7 @@ export type API = {
     "auth/CurrentUserFetch": { user: "required", input: {}, output: UserLoggedInData }
     "auth/SessionLogOut": {user: "required", input: {}, output: void}
     // App
-    "app/FeaturedImagesFetch": {user: "optional", input: {}, output: {loggedIn: true, images: LoggedInUserPredictionImage[]} | {loggedOut: false, images: LoggedOutPredictionImage[]}}
+    "app/FeaturedImagesFetch": {user: "optional", input: {}, output: {loggedIn: true, images: LoggedInUserPredictionImage[]} | {loggedIn: false, images: LoggedOutPredictionImage[]}}
 }
 
 type GetApiRouteGroupPart<Route> = Route extends `${infer Group}/${string}` ? Group : never

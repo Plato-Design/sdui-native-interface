@@ -17,7 +17,7 @@ export type API = {
             loggedIn: true;
             images: LoggedInUserPredictionImage[];
         } | {
-            loggedOut: false;
+            loggedIn: false;
             images: LoggedOutPredictionImage[];
         };
     };
