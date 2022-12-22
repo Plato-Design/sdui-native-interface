@@ -19,9 +19,7 @@ export type ClientApiInterface = {
     (input: API[Route]["input"], apiKey: string) => Promise<API[Route]["output"]> :
     API[Route]["user"] extends "optional" ?
     (input: API[Route]["input"], apiKey?: string | undefined) => Promise<API[Route]["output"]> :
-    API[Route]["user"] extends "none" ?
-    (input: API[Route]["input"]) => Promise<API[Route]["output"]> :
-    never
+    (input: API[Route]["input"]) => Promise<API[Route]["output"]>
 }
 
 export type ServerApiHandler<UserLookup, Input, Output> = 
@@ -29,9 +27,7 @@ export type ServerApiHandler<UserLookup, Input, Output> =
     {user: "required", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user: UserLoggedInData, session: UserNativeSessionApiKey) =>  Promise<Output>} :
     UserLookup extends "optional"  ?
     {user: "optional", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user?: UserLoggedInData | undefined, session?: UserNativeSessionApiKey | undefined) =>  Promise<Output>} :
-    UserLookup extends "none"  ?
-    {user: "none", inputValidator: (data: unknown) => Input, requestHandler: (input: Input) =>  Promise<Output>} :
-    never
+    {user: "none", inputValidator: (data: unknown) => Input, requestHandler: (input: Input) =>  Promise<Output>}
 
 export type ServerApiInterface = {
     [RouteGroup in GetApiRouteGroupPart<keyof API>]: {

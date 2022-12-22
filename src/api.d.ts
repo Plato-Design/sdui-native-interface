@@ -26,7 +26,7 @@ type GetApiRouteGroupPart<Route> = Route extends `${infer Group}/${string}` ? Gr
 type GetApiRouteMethodPartFromGroup<Route, Group extends string> = Route extends `${Group}/${infer Method}` ? Method : never;
 type MakeApiRoute<Group extends string, Method extends string> = `${Group}/${Method}`;
 export type ClientApiInterface = {
-    [Route in keyof API]: API[Route]["user"] extends "required" ? (input: API[Route]["input"], apiKey: string) => Promise<API[Route]["output"]> : API[Route]["user"] extends "optional" ? (input: API[Route]["input"], apiKey?: string | undefined) => Promise<API[Route]["output"]> : API[Route]["user"] extends "none" ? (input: API[Route]["input"]) => Promise<API[Route]["output"]> : never;
+    [Route in keyof API]: API[Route]["user"] extends "required" ? (input: API[Route]["input"], apiKey: string) => Promise<API[Route]["output"]> : API[Route]["user"] extends "optional" ? (input: API[Route]["input"], apiKey?: string | undefined) => Promise<API[Route]["output"]> : (input: API[Route]["input"]) => Promise<API[Route]["output"]>;
 };
 export type ServerApiHandler<UserLookup, Input, Output> = UserLookup extends "required" ? {
     user: "required";
@@ -36,11 +36,11 @@ export type ServerApiHandler<UserLookup, Input, Output> = UserLookup extends "re
     user: "optional";
     inputValidator: (data: unknown) => Input;
     requestHandler: (input: Input, user?: UserLoggedInData | undefined, session?: UserNativeSessionApiKey | undefined) => Promise<Output>;
-} : UserLookup extends "none" ? {
+} : {
     user: "none";
     inputValidator: (data: unknown) => Input;
     requestHandler: (input: Input) => Promise<Output>;
-} : never;
+};
 export type ServerApiInterface = {
     [RouteGroup in GetApiRouteGroupPart<keyof API>]: {
         [RouteMethod in GetApiRouteMethodPartFromGroup<keyof API, RouteGroup>]: MakeApiRoute<RouteGroup, RouteMethod> extends keyof API ? (API[MakeApiRoute<RouteGroup, RouteMethod>] extends {
