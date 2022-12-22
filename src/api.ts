@@ -1,5 +1,5 @@
 import { z } from "zod"
-import type { UserLoggedInData } from "./types"
+import type { UserLoggedInData, UserNativeSessionApiKey } from "./types"
 
 export type API = {
     // Auth
@@ -26,9 +26,9 @@ export type ClientApiInterface = {
 
 export type ServerApiHandler<UserLookup, Input, Output> = 
     UserLookup extends "required"  ?
-    {user: "required", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user: UserLoggedInData) =>  Promise<Output>} :
+    {user: "required", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user: UserLoggedInData, session: UserNativeSessionApiKey) =>  Promise<Output>} :
     UserLookup extends "optional"  ?
-    {user: "optional", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user?: UserLoggedInData | undefined) =>  Promise<Output>} :
+    {user: "optional", inputValidator: (data: unknown) => Input, requestHandler: (input: Input, user?: UserLoggedInData | undefined, session?: UserNativeSessionApiKey | undefined) =>  Promise<Output>} :
     UserLookup extends "none"  ?
     {user: "none", inputValidator: (data: unknown) => Input, requestHandler: (input: Input) =>  Promise<Output>} :
     never

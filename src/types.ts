@@ -29,6 +29,16 @@ export type User = {
   userPrivilegedId: string
 }
 
+export type UserNativeSessionApiKey = {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+  userId: string
+  apiKey: string
+  expiresAt: Date
+  loggedOut: boolean
+}
+
 export enum SubscriptionPlanStatus {
   NO_SUBSCRIPTION,
   SUBSCRIBED,
@@ -143,8 +153,21 @@ export type InputQuery = {
   didSendImagePredictionRequests: boolean
   metadata: JsonValue
 }
-export type BookmarkedPredictionImage = {}
-export type DislikedPredictionImage = {}
+export type BookmarkedPredictionImage = {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+  predictionImageId: string
+  userId: string
+}
+
+export type DislikedPredictionImage = {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+  predictionImageId: string
+  userId: string
+}
 
 /* ========= INTERFACE TYPES ========== */
 

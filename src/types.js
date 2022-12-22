@@ -3,7 +3,7 @@
 https://github.com/fabien0102/ts-to-zod
 */
 exports.__esModule = true;
-exports.Status = exports.SubscriptionPlanStatus = exports.GlobalRole = void 0;
+exports.Visibility = exports.Status = exports.SubscriptionPlanStatus = exports.GlobalRole = void 0;
 /* ======== DATABASE TYPES ========== */
 var GlobalRole;
 (function (GlobalRole) {
@@ -30,3 +30,9 @@ var Status;
     Status[Status["cancelled"] = 8] = "cancelled";
     Status[Status["canceled"] = 9] = "canceled";
 })(Status = exports.Status || (exports.Status = {}));
+var Visibility;
+(function (Visibility) {
+    Visibility[Visibility["public"] = 0] = "public";
+    Visibility[Visibility["private"] = 1] = "private";
+})(Visibility = exports.Visibility || (exports.Visibility = {}));
+;
