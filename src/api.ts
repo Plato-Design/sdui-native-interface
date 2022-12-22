@@ -1,12 +1,12 @@
 import { z } from "zod"
-import type { UserLoggedInData, UserNativeSessionApiKey } from "./types"
+import type { LoggedInUserPredictionImage, LoggedOutPredictionImage, PredictionImage, UserLoggedInData, UserNativeSessionApiKey } from "./types"
 
 export type API = {
     // Auth
     "auth/CurrentUserFetch": { user: "required", input: {}, output: UserLoggedInData }
     "auth/SessionLogOut": {user: "required", input: {}, output: void}
     // App
-    "app/FeaturedImagesFetch": {user: "optional", input: {}, output: number}
+    "app/FeaturedImagesFetch": {user: "optional", input: {}, output: {loggedIn: true, images: LoggedInUserPredictionImage[]} | {loggedOut: false, images: LoggedOutPredictionImage[]}}
 }
 
 type GetApiRouteGroupPart<Route> = Route extends `${infer Group}/${string}` ? Group : never

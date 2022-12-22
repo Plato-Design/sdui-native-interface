@@ -724,6 +724,319 @@ export declare const loggedInUserPredictionImageSchema: z.ZodIntersection<z.ZodO
         predictionImageId: string;
     }[];
 }>>;
+export declare const loggedOutPredictionImageSchema: z.ZodIntersection<z.ZodObject<{
+    id: z.ZodString;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    urlOriginal: z.ZodString;
+    urlHosted: z.ZodNullable<z.ZodString>;
+    urlHostedStatus: z.ZodNativeEnum<typeof Status>;
+    urlUpscaled4x: z.ZodNullable<z.ZodString>;
+    urlUpscaled4xStatus: z.ZodNativeEnum<typeof Status>;
+    isDeleted: z.ZodBoolean;
+    isFeatured: z.ZodBoolean;
+    predictionId: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    urlOriginal: string;
+    urlHosted: string | null;
+    urlHostedStatus: Status;
+    urlUpscaled4x: string | null;
+    urlUpscaled4xStatus: Status;
+    isDeleted: boolean;
+    isFeatured: boolean;
+    predictionId: string;
+}, {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    urlOriginal: string;
+    urlHosted: string | null;
+    urlHostedStatus: Status;
+    urlUpscaled4x: string | null;
+    urlUpscaled4xStatus: Status;
+    isDeleted: boolean;
+    isFeatured: boolean;
+    predictionId: string;
+}>, z.ZodObject<{
+    prediction: z.ZodIntersection<z.ZodObject<{
+        id: z.ZodString;
+        createdAt: z.ZodDate;
+        updatedAt: z.ZodDate;
+        status: z.ZodNativeEnum<typeof Status>;
+        error: z.ZodNullable<z.ZodString>;
+        model: z.ZodString;
+        input: z.ZodType<JsonValue, z.ZodTypeDef, JsonValue>;
+        output: z.ZodType<JsonValue, z.ZodTypeDef, JsonValue>;
+        startedAt: z.ZodNullable<z.ZodDate>;
+        completedAt: z.ZodNullable<z.ZodDate>;
+        replicateId: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        input: JsonValue;
+        output: JsonValue;
+        status: Status;
+        error: string | null;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        model: string;
+        startedAt: Date | null;
+        completedAt: Date | null;
+        replicateId: string | null;
+    }, {
+        input: JsonValue;
+        output: JsonValue;
+        status: Status;
+        error: string | null;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        model: string;
+        startedAt: Date | null;
+        completedAt: Date | null;
+        replicateId: string | null;
+    }>, z.ZodObject<{
+        inputQueryPredictions: z.ZodArray<z.ZodIntersection<z.ZodObject<{
+            id: z.ZodString;
+            createdAt: z.ZodDate;
+            updatedAt: z.ZodDate;
+            inputQueryId: z.ZodString;
+            predictionId: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        }, {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        }>, z.ZodObject<{
+            inputQuery: z.ZodObject<{
+                id: z.ZodString;
+                createdAt: z.ZodDate;
+                updatedAt: z.ZodDate;
+                userId: z.ZodString;
+                prevInputQueryId: z.ZodNullable<z.ZodString>;
+                parentPredictionImageId: z.ZodNullable<z.ZodString>;
+                inputText: z.ZodString;
+                inputStyle: z.ZodNullable<z.ZodString>;
+                inputImage: z.ZodNullable<z.ZodString>;
+                inputSeed: z.ZodNumber;
+                trainedEntityId: z.ZodNullable<z.ZodString>;
+                numVariations: z.ZodNumber;
+                visibility: z.ZodNativeEnum<typeof Visibility>;
+                didSendImagePredictionRequests: z.ZodBoolean;
+                metadata: z.ZodType<JsonValue, z.ZodTypeDef, JsonValue>;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            }, {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        }, {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        }>>, "many">;
+    }, "strip", z.ZodTypeAny, {
+        inputQueryPredictions: ({
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        } & {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        })[];
+    }, {
+        inputQueryPredictions: ({
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        } & {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        })[];
+    }>>;
+}, "strip", z.ZodTypeAny, {
+    prediction: {
+        input: JsonValue;
+        output: JsonValue;
+        status: Status;
+        error: string | null;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        model: string;
+        startedAt: Date | null;
+        completedAt: Date | null;
+        replicateId: string | null;
+    } & {
+        inputQueryPredictions: ({
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        } & {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        })[];
+    };
+}, {
+    prediction: {
+        input: JsonValue;
+        output: JsonValue;
+        status: Status;
+        error: string | null;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        model: string;
+        startedAt: Date | null;
+        completedAt: Date | null;
+        replicateId: string | null;
+    } & {
+        inputQueryPredictions: ({
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            predictionId: string;
+            inputQueryId: string;
+        } & {
+            inputQuery: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                userId: string;
+                prevInputQueryId: string | null;
+                parentPredictionImageId: string | null;
+                inputText: string;
+                inputStyle: string | null;
+                inputImage: string | null;
+                inputSeed: number;
+                trainedEntityId: string | null;
+                numVariations: number;
+                visibility: Visibility;
+                didSendImagePredictionRequests: boolean;
+                metadata: JsonValue;
+            };
+        })[];
+    };
+}>>;
 export declare const userLoggedInDataSchema: z.ZodIntersection<z.ZodObject<{
     id: z.ZodString;
     createdAt: z.ZodDate;

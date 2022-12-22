@@ -1,4 +1,4 @@
-import type { UserLoggedInData, UserNativeSessionApiKey } from "./types";
+import type { LoggedInUserPredictionImage, LoggedOutPredictionImage, UserLoggedInData, UserNativeSessionApiKey } from "./types";
 export type API = {
     "auth/CurrentUserFetch": {
         user: "required";
@@ -13,7 +13,13 @@ export type API = {
     "app/FeaturedImagesFetch": {
         user: "optional";
         input: {};
-        output: number;
+        output: {
+            loggedIn: true;
+            images: LoggedInUserPredictionImage[];
+        } | {
+            loggedOut: false;
+            images: LoggedOutPredictionImage[];
+        };
     };
 };
 type GetApiRouteGroupPart<Route> = Route extends `${infer Group}/${string}` ? Group : never;

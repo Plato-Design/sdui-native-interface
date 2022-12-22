@@ -176,9 +176,17 @@ export type LoggedInUserPredictionImage = PredictionImage & {
       inputQueryPredictions: (InputQueryPrediction & {
           inputQuery: InputQuery
       })[];
-  };
-  bookmarkedPredictionImages: BookmarkedPredictionImage[];
-  dislikedPredictionImages: DislikedPredictionImage[];
+  }
+  bookmarkedPredictionImages: BookmarkedPredictionImage[]
+  dislikedPredictionImages: DislikedPredictionImage[]
+}
+
+export type LoggedOutPredictionImage = PredictionImage & {
+  prediction: Prediction & {
+      inputQueryPredictions: (InputQueryPrediction & {
+          inputQuery: InputQuery
+      })[];
+  }
 }
 
 export type UserLoggedInData = User & {

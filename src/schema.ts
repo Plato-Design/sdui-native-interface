@@ -176,6 +176,22 @@ export const loggedInUserPredictionImageSchema = predictionImageSchema.and(
   })
 );
 
+export const loggedOutPredictionImageSchema = predictionImageSchema.and(
+  z.object({
+    prediction: predictionSchema.and(
+      z.object({
+        inputQueryPredictions: z.array(
+          inputQueryPredictionSchema.and(
+            z.object({
+              inputQuery: inputQuerySchema,
+            })
+          )
+        ),
+      })
+    ),
+  })
+);
+
 export const userLoggedInDataSchema = userSchema.and(
   z.object({
     userPrivileged: userPrivilegedSchema,
