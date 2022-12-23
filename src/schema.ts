@@ -29,7 +29,6 @@ export const userSchema = z.object({
   role: globalRoleSchema,
   isEmailVerified: z.boolean(),
   didAgreeToTOS: z.boolean(),
-  doAutoTrainEntities: z.boolean(),
   userPrivilegedId: z.string(),
 });
 

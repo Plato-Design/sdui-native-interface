@@ -13,7 +13,6 @@ export type User = {
     role: GlobalRole;
     isEmailVerified: boolean;
     didAgreeToTOS: boolean;
-    doAutoTrainEntities: boolean;
     userPrivilegedId: string;
 };
 export type UserNativeSessionApiKey = {

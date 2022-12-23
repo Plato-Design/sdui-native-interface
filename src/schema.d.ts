@@ -9,7 +9,6 @@ export declare const userSchema: z.ZodObject<{
     role: z.ZodNativeEnum<typeof GlobalRole>;
     isEmailVerified: z.ZodBoolean;
     didAgreeToTOS: z.ZodBoolean;
-    doAutoTrainEntities: z.ZodBoolean;
     userPrivilegedId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -18,7 +17,6 @@ export declare const userSchema: z.ZodObject<{
     role: GlobalRole;
     isEmailVerified: boolean;
     didAgreeToTOS: boolean;
-    doAutoTrainEntities: boolean;
     userPrivilegedId: string;
 }, {
     id: string;
@@ -27,7 +25,6 @@ export declare const userSchema: z.ZodObject<{
     role: GlobalRole;
     isEmailVerified: boolean;
     didAgreeToTOS: boolean;
-    doAutoTrainEntities: boolean;
     userPrivilegedId: string;
 }>;
 export declare const userNativeSessionApiKeySchema: z.ZodObject<{
@@ -1044,7 +1041,6 @@ export declare const userLoggedInDataSchema: z.ZodIntersection<z.ZodObject<{
     role: z.ZodNativeEnum<typeof GlobalRole>;
     isEmailVerified: z.ZodBoolean;
     didAgreeToTOS: z.ZodBoolean;
-    doAutoTrainEntities: z.ZodBoolean;
     userPrivilegedId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -1053,7 +1049,6 @@ export declare const userLoggedInDataSchema: z.ZodIntersection<z.ZodObject<{
     role: GlobalRole;
     isEmailVerified: boolean;
     didAgreeToTOS: boolean;
-    doAutoTrainEntities: boolean;
     userPrivilegedId: string;
 }, {
     id: string;
@@ -1062,7 +1057,6 @@ export declare const userLoggedInDataSchema: z.ZodIntersection<z.ZodObject<{
     role: GlobalRole;
     isEmailVerified: boolean;
     didAgreeToTOS: boolean;
-    doAutoTrainEntities: boolean;
     userPrivilegedId: string;
 }>, z.ZodObject<{
     userPrivileged: z.ZodObject<{

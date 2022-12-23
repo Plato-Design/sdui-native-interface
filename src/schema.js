@@ -23,7 +23,6 @@ exports.userSchema = zod_1.z.object({
     role: exports.globalRoleSchema,
     isEmailVerified: zod_1.z.boolean(),
     didAgreeToTOS: zod_1.z.boolean(),
-    doAutoTrainEntities: zod_1.z.boolean(),
     userPrivilegedId: zod_1.z.string()
 });
 exports.userNativeSessionApiKeySchema = zod_1.z.object({
